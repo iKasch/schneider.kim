@@ -1,7 +1,7 @@
-Title: Kirby Starterkit
+Title: Kim Schneider - schneider.kim
 ----
-Author: Bastian Allgeier GmbH
+Author: Kim Schneider
 ----
-Description: This is Kirby's Starterkit.
+Description: Frontend Entwickler Kim Schneider
 ----
-Copyright: © 2009-(date: Year) (link: http://bastianallgeier.com text: Bastian Allgeier GmbH)
+Copyright: © (date: Year)

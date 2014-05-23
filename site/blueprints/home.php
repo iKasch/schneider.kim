@@ -10,3 +10,4 @@ fields:
     label: Text
     type:  textarea
     size:  large
+    buttons: true
