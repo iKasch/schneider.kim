@@ -1,3 +1,4 @@
 config.codekit
 thumbs
 .DS_Store
+.sass-cache
