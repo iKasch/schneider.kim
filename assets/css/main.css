@@ -1,0 +1,318 @@
+/***************************************************
+
+****** Starterkit / Kirby Default Theme ******
+
+*** Author:     Bastian Allgeier GmbH
+*** Theme-URL:  http://default.getkirby.com
+*** Version:    2.0
+
+****************************************************/
+
+
+/*
+ :::  Reset
+-------------------------------------------------- */
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, nav, section, summary {
+  display: block;
+}
+ol, ul {
+  list-style: none;
+}
+
+
+
+/*
+ :::  Site
+-------------------------------------------------- */
+html {
+  height: 101%;
+  font-family: 'Source Sans Pro', sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.5em;
+  padding: 3em;
+  max-width: 50em;
+  background: #fff;
+  color: #000;
+}
+
+
+
+/*
+ :::  Header
+-------------------------------------------------- */
+header {
+  border-bottom: 2px solid red;
+}
+.branding {
+  float: left;
+  margin-bottom: 1.5em;
+}
+
+
+
+/*
+ :::  Navigation
+-------------------------------------------------- */
+.menu {
+  float: right;
+}
+
+.menu a {
+  display: block;
+  color: #000;
+}
+  .menu a:hover {
+    color: #ff0100;
+    text-decoration: none;
+  }
+  .menu .active {
+    color: #ff0100;
+  }
+
+.menu > li {
+  float: left;
+  position: relative;
+  margin-left: 2em;
+}
+  .menu > li:hover ul {
+    display: block;
+  }
+  .menu > li > a {
+    font-weight: 600;
+    padding: .75em 0 1em;
+  }
+
+.submenu {
+  position: absolute;
+  z-index: 999;
+  display: none;
+  border-top: none;
+}
+  .submenu:before {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    top: -10px;
+    left: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #000;
+  }
+  .submenu li {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #444;
+  }
+    .submenu a {
+      font-weight: normal;
+      padding: .5em 1.5em;
+      font-size: .9em;
+      font-weight: 300;
+      color: #fff;
+      background-color: #000;
+      white-space: nowrap;
+    }
+    .submenu a:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+@media screen and (max-width: 40em) {
+  body {
+    padding: 1.5em;
+  }
+  .menu {
+    float: left;
+    width: 100%;
+  }
+  .menu > li {
+    margin-left: 0;
+    width: 100%;
+    margin: 0;
+  }
+  .menu > li > a {
+    padding: .5em 0;
+    border-top: 2px solid #ddd;
+  }
+  .submenu {
+    display: block;
+    position: relative;
+  }
+}
+
+
+
+/*
+ :::  Links
+-------------------------------------------------- */
+a {
+  color: red;
+  text-decoration: none;
+  transition: color .3s, background .3s, border .3s;
+}
+a:hover {
+  color: #000;
+}
+
+
+
+/*
+ :::  Headings
+-------------------------------------------------- */
+h1 {
+  font-size: 2em;
+  line-height: 1.25em;
+  font-weight: 400;
+  margin-bottom: .5em;
+}
+h2 {
+  font-size: 2em;
+  line-height: 1.25em;
+  font-weight: 300;
+  margin-bottom: .5em;
+  color: red;
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1.25em;
+  font-weight: 300;
+  margin-bottom: .5em;
+}
+h4 {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: red;
+}
+h1 a, h2 a, h3 a, h4 a {
+  color: inherit;
+}
+
+
+/*
+ :::  Main
+-------------------------------------------------- */
+main {
+  margin: 1.5em 0 3em;
+}
+main p {
+  margin-bottom: 1em;
+}
+main img {
+  margin-bottom: 20px;
+}
+section {
+  margin-top: 3em;
+  padding-top: 3em;
+  border-top: 2px solid #ddd;
+}
+
+.meta {
+  width: 100%;
+  margin: 0 0 1em 0;
+}
+.meta li {
+  float: left;
+  margin-right: 2em;
+  color: red;
+}
+.meta li b {
+  font-weight: 400;
+  color: #000;
+  padding-right: .25em;
+}
+
+.teaser {
+  list-style: none;
+  margin-left: 0;
+}
+.teaser li {
+  float: left;
+  width: 30%;
+  margin-left: 5%;
+}
+.teaser li:first-child {
+  margin-left: 0;
+}
+@media screen and (max-width: 750px) {
+  .teaser li {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 1.5em;
+  }
+}
+
+
+
+/*
+ :::  Projects
+-------------------------------------------------- */
+.nextprev {
+  padding: 1em 0;
+}
+.nextprev .prev {
+  float: left;
+}
+.nextprev .next {
+  float: right;
+}
+.nextprev a {
+  border: 2px solid #000;
+  padding: .25em 1em;
+  line-height: 1em;
+  color: #000;
+  border-radius: 5em;
+}
+.nextprev a:hover {
+  border-color: red;
+  color: red;
+}
+
+/*
+ :::  Footer
+-------------------------------------------------- */
+footer {
+  padding: 1em 0 6em;
+  font-size: .9em;
+  color: #222;
+  border-top: 2px solid red;
+}
+footer a {
+  padding-left: .5em;
+}
+
+
+/*
+ :::  Pix
+-------------------------------------------------- */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+
+
+/*
+ :::  Clearfix
+-------------------------------------------------- */
+.cf:after {
+  content: "";
+  display: table;
+  clear: both;
+}
