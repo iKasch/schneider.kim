@@ -30,8 +30,16 @@ abstract class ChildrenAbstract extends Collection {
   public function not() {
     $collection = clone $this;
     foreach(func_get_args() as $uri) {
-      $uri = is_a($uri, 'Page') ? $uri->id() : $uri;
-      unset($collection->data[$uri]);
+      if(is_a($uri, 'Page')) {
+        // unset by Page object
+        unset($collection->data[$uri->id()]);
+      } else if(isset($collection->data[$uri])) {
+        // unset by URI
+        unset($collection->data[$uri]);
+      } else if($page = $collection->findBy('uid', $uri)) {
+        // unset by UID
+        unset($collection->data[$page->id()]);
+      }
     }
     return $collection;
   }
@@ -53,7 +61,7 @@ abstract class ChildrenAbstract extends Collection {
    * @param array $data
    */
   public function create($uid, $template, $data = array()) {
-    return page::create($this->page->uri() . '/' . $uid, $template, $data);
+    return page::create($this->page->id() . '/' . $uid, $template, $data);
   }
 
   /**
@@ -230,6 +238,79 @@ abstract class ChildrenAbstract extends Collection {
   }
 
   /**
+   * Native search method to search for anything within the collection
+   */
+  public function search($query, $params = array()) {
+
+    if(is_string($params)) {
+      $params = array('fields' => str::split($params, '|'));
+    }
+
+    $defaults = array(
+      'minlength' => 2,
+      'fields'    => array(),
+      'words'     => false,
+      'score'     => array()
+    );
+
+    $options     = array_merge($defaults, $params);
+    $collection  = clone $this;
+    $searchwords = preg_replace('/(\s)/u',',', $query);
+    $searchwords = str::split($searchwords, ',', $options['minlength']);
+
+    if(!empty($options['stopwords'])) {
+      $searchwords = array_diff($searchwords, $options['stopwords']);
+    }
+
+    if(empty($searchwords)) return $collection->limit(0);
+
+    $searchwords = array_map(function($value) use($options) {
+      return $options['words'] ? '\b' . preg_quote($value) . '\b' : preg_quote($value);
+    }, $searchwords);
+
+    $preg    = '!(' . implode('|', $searchwords) . ')!i';
+    $results = $collection->filter(function($page) use($query, $searchwords, $preg, $options) {
+
+      $data = $page->content()->toArray();
+      $keys = array_keys($data);
+
+      if(!empty($options['fields'])) {
+        $keys = array_intersect($keys, $options['fields']);
+      }
+
+      $page->searchHits  = 0;
+      $page->searchScore = 0;
+
+      foreach($keys as $key) {
+
+        $score = a::get($options['score'], $key, 1);
+
+        // check for a match
+        if($matches = preg_match_all($preg, $data[$key])) {
+
+          $page->searchHits  += $matches;
+          $page->searchScore += $matches * $score;
+
+          // check for full matches
+          if($matches = preg_match_all('!' . preg_quote($query) . '!i', $data[$key])) {
+            $page->searchScore += $matches * $score;
+          }
+
+        }
+
+      }
+
+      return $page->searchHits > 0 ? true : false;
+
+    });
+
+    $results = $results->sortBy('searchScore', SORT_DESC);
+
+    return $results;
+
+  }
+
+  /**
    * Creates a clean one-level collection with all
    * pages, subpages, subsubpages, etc.
    *
@@ -250,6 +331,36 @@ abstract class ChildrenAbstract extends Collection {
     }
 
     return $this->cache['index'];
+
+  }
+
+  /**
+   * Extracts all values for a single field into
+   * a new array
+   *
+   * @param string $field
+   * @return array
+   */
+  public function pluck($field, $split = null, $unique = false) {
+
+    $result = array();
+
+    foreach($this->data as $item) {
+      $row = $this->extractValue($item, $field);
+
+      if(!is_null($split)) {
+        $result = array_merge($result, str::split($row, $split));
+      } else {
+        $result[] = $row;
+      }
+
+    }
+
+    if($unique) {
+      $result = array_unique($result);
+    }
+
+    return array_values($result);
 
   }
 

@@ -44,8 +44,8 @@ abstract class PageAbstract {
     $this->depth   = $parent->depth() + 1;
 
     // extract the uid and num of the directory
-    if(preg_match('/^([0-9]+[\-]+)/', $this->dirname, $match)) {
-      $this->uid = str_replace($match[1], '', $this->dirname);
+    if(preg_match('/^([0-9]+[\-]+)(.*)/', $this->dirname, $match)) {
+      $this->uid = $match[2];
       $this->num = trim(rtrim($match[1], '-'));
     } else {
       $this->num = null;
@@ -104,7 +104,7 @@ abstract class PageAbstract {
     $parents  = array();
     $next     = $this->parent();
 
-    while($next->depth() > 0) {
+    while($next and $next->depth() > 0) {
       $children->data[$next->id()] = $next;
       $next = $next->parent();
     }
@@ -358,10 +358,11 @@ abstract class PageAbstract {
   /**
    * Returns the siblings for this page, not including this page
    *
+   * @param boolean $self
    * @return Children
    */
-  public function siblings() {
-    return $this->parent->children()->not($this->uri);
+  public function siblings($self = true) {
+    return $self ? $this->parent->children() : $this->parent->children()->not($this);
   }
 
   /**
@@ -372,11 +373,17 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return mixed Page or null
    */
-  protected function _next(Children $siblings, $sort = false, $direction = 'asc') {
+  protected function _next(Children $siblings, $sort = false, $direction = 'asc', $visibility = false) {
     if($sort) $siblings = $siblings->sortBy($sort, $direction);
     $index = $siblings->indexOf($this);
-    if($index === false) return false;
-    return $siblings->nth($index + 1);
+    if($index === false) return null;
+    if($visibility) {
+      $siblings = $siblings->offset($index+1);
+      $siblings = $siblings->{$visibility}();
+      return $siblings->first();
+    } else {
+      return $siblings->nth($index + 1);
+    }
   }
 
   /**
@@ -387,11 +394,17 @@ abstract class PageAbstract {
    * @param string $direction An optional sort direction
    * @return mixed Page or null
    */
-  protected function _prev(Children $siblings, $sort = false, $direction = 'asc') {
+  protected function _prev(Children $siblings, $sort = false, $direction = 'asc', $visibility = false) {
     if($sort) $siblings = $siblings->sortBy($sort, $direction);
     $index = $siblings->indexOf($this);
-    if($index === false) return false;
-    return $siblings->nth($index - 1);
+    if($index === false or $index === 0) return null;
+    if($visibility) {
+      $siblings = $siblings->limit($index);
+      $siblings = $siblings->{$visibility}();
+      return $siblings->last();
+    } else {
+      return $siblings->nth($index - 1);
+    }
   }
 
   /**
@@ -404,6 +417,17 @@ abstract class PageAbstract {
   }
 
   /**
+   * Checks if there's a next page
+   *
+   * @param string $sort An optional sort field for the siblings
+   * @param string $direction An optional sort direction
+   * @return boolean
+   */
+  public function hasNext($sort = false, $direction = 'asc') {
+    return $this->next($sort, $direction) != null;
+  }
+
+  /**
    * Returns the next visible page in the current collection if available
    *
    * @param string $sort An optional sort field for the siblings
@@ -411,7 +435,18 @@ abstract class PageAbstract {
    * @return mixed Page or null
    */
   public function nextVisible($sort = false, $direction = 'asc') {
-    return $this->_next($this->parent->children()->visible(), $sort, $direction);
+    return $this->_next($this->parent->children(), $sort, $direction, 'visible');
+  }
+
+  /**
+   * Checks if there's a next visible page
+   *
+   * @param string $sort An optional sort field for the siblings
+   * @param string $direction An optional sort direction
+   * @return boolean
+   */
+  public function hasNextVisible($sort = false, $direction = 'asc') {
+    return $this->nextVisible($sort, $direction) != null;
   }
 
   /**
@@ -422,7 +457,18 @@ abstract class PageAbstract {
    * @return mixed Page or null
    */
   public function nextInvisible($sort = false, $direction = 'asc') {
-    return $this->_next($this->parent->children()->invisible(), $sort, $direction);
+    return $this->_next($this->parent->children(), $sort, $direction, 'invisible');
+  }
+
+  /**
+   * Checks if there's a next invisible page
+   *
+   * @param string $sort An optional sort field for the siblings
+   * @param string $direction An optional sort direction
+   * @return boolean
+   */
+  public function hasNextInvisible($sort = false, $direction = 'asc') {
+    return $this->nextInvisible($sort, $direction) != null;
   }
 
   /**
@@ -435,6 +481,17 @@ abstract class PageAbstract {
   }
 
   /**
+   * Checks if there's a previous page
+   *
+   * @param string $sort An optional sort field for the siblings
+   * @param string $direction An optional sort direction
+   * @return boolean
+   */
+  public function hasPrev($sort = false, $direction = 'asc') {
+    return $this->prev($sort, $direction) != null;
+  }
+
+  /**
    * Returns the previous visible page in the current collection if available
    *
    * @param string $sort An optional sort field for the siblings
@@ -442,7 +499,18 @@ abstract class PageAbstract {
    * @return mixed Page or null
    */
   public function prevVisible($sort = false, $direction = 'asc') {
-    return $this->_prev($this->parent->children()->visible(), $sort, $direction);
+    return $this->_prev($this->parent->children(), $sort, $direction, 'visible');
+  }
+
+  /**
+   * Checks if there's a previous visible page
+   *
+   * @param string $sort An optional sort field for the siblings
+   * @param string $direction An optional sort direction
+   * @return boolean
+   */
+  public function hasPrevVisible($sort = false, $direction = 'asc') {
+    return $this->prevVisible($sort, $direction) != null;
   }
 
   /**
@@ -453,7 +521,18 @@ abstract class PageAbstract {
    * @return mixed Page or null
    */
   public function prevInvisible($sort = false, $direction = 'asc') {
-    return $this->_prev($this->parent->children()->invisible(), $sort, $direction);
+    return $this->_prev($this->parent->children(), $sort, $direction, 'invisible');
+  }
+
+  /**
+   * Checks if there's a previous invisible page
+   *
+   * @param string $sort An optional sort field for the siblings
+   * @param string $direction An optional sort direction
+   * @return boolean
+   */
+  public function hasPrevInvisible($sort = false, $direction = 'asc') {
+    return $this->prevInvisible($sort, $direction) != null;
   }
 
   /**
@@ -555,7 +634,8 @@ abstract class PageAbstract {
    * @return Field | string
    */
   public function title() {
-    return $this->content()->get('title') ?: $this->uid;
+    $title = $this->content()->get('title');
+    return $title != '' ? $title : $this->uid();
   }
 
   /**
@@ -591,7 +671,7 @@ abstract class PageAbstract {
    * @return Field
    */
   public function __call($key, $arguments = null) {
-    return $this->content()->get($key, $arguments);
+    return isset($this->$key) ? $this->$key : $this->content()->get($key, $arguments);
   }
 
   /**
@@ -721,6 +801,25 @@ abstract class PageAbstract {
   }
 
   /**
+   * Checks if the page or any of its files are writable
+   *
+   * @return boolean
+   */
+  public function isWritable() {
+
+    $folder = new Folder($this->root());
+
+    if(!$folder->isWritable()) return false;
+
+    foreach($folder->files() as $f) {
+      if(!$f->isWritable()) return false;
+    }
+
+    return true;
+
+  }
+
+  /**
    * Returns the timestamp when the page
    * has been modified
    *
@@ -737,6 +836,17 @@ abstract class PageAbstract {
    */
   public function index() {
     return $this->children()->index();
+  }
+
+  /**
+   * Search in subpages and all descendants of this page
+   *
+   * @param string $query
+   * @param array $params
+   * @return Children
+   */
+  public function search($query, $params = array()) {
+    return $this->children()->index()->search($query, $params);
   }
 
   // template stuff
@@ -842,44 +952,40 @@ abstract class PageAbstract {
   }
 
   /**
-   * Returns the matching blueprint object
-   * for the page's template
-   *
-   * @return Blueprint
-   */
-  public function blueprint() {
-    try {
-      return blueprint::find($this);
-    } catch(Exception $e) {
-      return null;
-    }
-  }
-
-  /**
    * Private method to create a page directory
    */
   static protected function createDirectory($uri) {
 
     $uid       = str::slug(basename($uri));
     $parentURI = dirname($uri);
-    $parent    = ($parentURI == '.' or empty($parentURI) or $parentURI == '/') ? site() : page($parentURI);
+    $parent    = ($parentURI == '.' or empty($parentURI) or $parentURI == DS) ? site() : page($parentURI);
 
     if(!$parent) {
       throw new Exception('The parent does not exist');
+    }
+
+    // check for an entered sorting number
+    if(preg_match('!^(\d+)\-(.*)!', $uid, $matches)) {
+      $num = $matches[1];
+      $uid = $matches[2];
+      $dir = $num . '-' . $uid;
+    } else {
+      $num = false;
+      $dir = $uid;
     }
 
     if($parent->children()->findBy('uid', $uid)) {
       throw new Exception('The page UID exists');
     }
 
-    if(!dir::make($parent->root() . DS . $uid)) {
+    if(!dir::make($parent->root() . DS . $dir)) {
       throw new Exception('The directory could not be created');
     }
 
     // make sure the new directory is available everywhere
     $parent->reset();
 
-    return $parent->uri() . '/' . $uid;
+    return $parent->id() . '/' . $uid;
 
   }
 
@@ -949,14 +1055,20 @@ abstract class PageAbstract {
 
     $uid = str::slug($uid);
 
+    if(empty($uid)) {
+      throw new Exception('The uid is missing');
+    }
+
+    // don't do anything if the uid exists
     if($this->uid() === $uid) return true;
+
+    // check for an existing page with the same UID
+    if($this->siblings()->not($this)->find($uid)) {
+      throw new Exception('A page with this uid already exists');
+    }
 
     $dir  = $this->isVisible() ? $this->num() . '-' . $uid : $uid;
     $root = dirname($this->root()) . DS . $dir;
-
-    if(is_dir($root)) {
-      throw new Exception('A page with this uid already exists');
-    }
 
     if(!dir::move($this->root(), $root)) {
       throw new Exception('The directory could not be moved');
@@ -1021,6 +1133,16 @@ abstract class PageAbstract {
 
   }
 
+  public function isDeletable() {
+
+    if($this->isSite())      return false;
+    if($this->isHomePage())  return false;
+    if($this->isErrorPage()) return false;
+
+    return true;
+
+  }
+
   /**
    * Deletes the page
    *
@@ -1028,20 +1150,12 @@ abstract class PageAbstract {
    */
   public function delete($force = false) {
 
-    if($this->isSite()) {
-      throw new Exception('The site cannot be deleted');
+    if(!$this->isDeletable()) {
+      throw new Exception('The page cannot be deleted');
     }
 
     if($force === false and $this->children()->count()) {
       throw new Exception('This page has subpages');
-    }
-
-    if($this->isHomePage()) {
-      throw new Exception('The home page cannot be deleted');
-    }
-
-    if($this->isErrorPage()) {
-      throw new Exception('The error page cannot be deleted');
     }
 
     $parent = $this->parent();

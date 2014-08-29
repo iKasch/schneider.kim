@@ -4,11 +4,12 @@
  * Embeds a snippet from the snippet folder
  *
  * @param string $file
- * @param array $data
+ * @param mixed $data array or object
  * @param boolean $return
  * @return string
  */
 function snippet($file, $data = array(), $return = false) {
+  if(is_object($data)) $data = array('item' => $data);
   return tpl::load(c::get('root.snippets') . DS . $file . '.php', $data, $return);
 }
 
@@ -78,6 +79,29 @@ function js($src, $async = false) {
     'src'   => url($src),
     'async' => $async
   ));
+
+}
+
+/**
+ * Global markdown parser shortcut
+ *
+ * @param string $text
+ * @return string
+ */
+function markdown($text) {
+
+  if(!c::get('markdown')) return $text;
+
+  // markdown
+  $parsedown = c::get('markdown.extra') ? new ParsedownExtra() : new Parsedown();
+
+  // markdown auto-breaks
+  if(c::get('markdown.breaks')) {
+    $parsedown->setBreaksEnabled(true);
+  }
+
+  // parse it, baby!
+  return $parsedown->text($text);
 
 }
 

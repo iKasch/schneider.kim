@@ -91,19 +91,15 @@ data::$adapters['kd'] = array(
   'extension' => array('md', 'txt'),
   'encode' => function($data) {
 
-    $divider = PHP_EOL . '----' . PHP_EOL;
-    $result  = null;
-    $break   = null;
-    $keys    = array();
+    $divider = "\n\n----\n\n";
+    $safediv = "\n\n---\n\n";
+    $result  = array();
     foreach($data AS $key => $value) {
-      $key = str::slug($key);
-      $key = str::ucfirst(str_replace('-', '_', $key));
-      if(in_array($key, $keys) || empty($key)) continue;
-      $keys[]  = $key;
-      $result .= $break . $key . ': ' . trim($value);
-      $break   = $divider;
+      $key = str::ucfirst(str::slug($key));
+      if(empty($key)) continue;
+      $result[$key] = $key . ": \n\n" . trim(str_replace($divider, $safediv, $value));
     }
-    return $result;
+    return implode($divider, $result);
 
   },
   'decode' => function($string) {
@@ -111,7 +107,7 @@ data::$adapters['kd'] = array(
     // remove BOM
     $string = str_replace(BOM, '', $string);
     // explode all fields by the line separator
-    $fields = explode(PHP_EOL . '----', $string);
+    $fields = explode("\n----", $string);
     // start the data array
     $data   = array();
 

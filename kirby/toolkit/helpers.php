@@ -136,7 +136,7 @@ function html($text, $keepTags = true) {
  *
  * @see html()
  */
-function h($text, $keepTags = true) {
+function h($text, $keepTags = false) {
   return html::encode($text, $keepTags);
 }
 
@@ -157,6 +157,16 @@ function xml($text) {
  */
 function widont($string = '') {
   return str::widont($string);
+}
+
+/**
+ * Convert a text to multiline text
+ *
+ * @param string $text
+ * @return string
+ */
+function multiline($text) {
+  return nl2br(html($text));
 }
 
 /**
@@ -256,7 +266,7 @@ function thumb($image, $params = array(), $obj = true) {
  * @param string $value
  * @return string
  */
-function root($key, $value = null) {
+function root($key = null, $value = null) {
 
   static $roots = array();
 

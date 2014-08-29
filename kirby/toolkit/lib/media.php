@@ -321,7 +321,7 @@ class Media {
    *
    * @return string
    */
-  public function uri() {
+  public function dataUri() {
     return 'data:' . $this->mime() . ';base64,' . $this->base64();
   }
 
@@ -378,6 +378,15 @@ class Media {
    */
   static public function load($data = array()) {
     return f::load($this->root, $data);
+  }
+
+  /**
+   * Read and send the file with the correct headers
+   *
+   * @param string $file
+   */
+  public function show() {
+    f::show($this->root);
   }
 
   /*
@@ -483,6 +492,16 @@ class Media {
    */
   public function isSquare() {
     return $this->dimensions()->square();
+  }
+
+  /**
+   * Returns the orientation as string
+   * landscape | portrait | square
+   *
+   * @return string
+   */
+  public function orientation() {
+    return $this->dimensions()->orientation();
   }
 
   /**

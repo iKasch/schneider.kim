@@ -82,6 +82,7 @@ class F {
     'png'   => 'image/png',
     'tiff'  => 'image/tiff',
     'tif'   => 'image/tiff',
+    'svg'   => 'image/svg+xml',
     'css'   => 'text/css',
     'html'  => 'text/html',
     'htm'   => 'text/html',
@@ -697,6 +698,24 @@ class F {
    */
   static public function isReadable($file) {
     return is_readable($file);
+  }
+
+  /**
+   * Read and send the file with the correct headers
+   *
+   * @param string $file
+   */
+  static public function show($file) {
+
+    // stop the download if the file does not exist or is not readable
+    if(!is_file($file) or !is_readable($file)) return false;
+
+    // send the browser headers
+    header::type(f::mime($file));
+
+    // send the file
+    die(f::read($file));
+
   }
 
   /*

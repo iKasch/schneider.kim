@@ -1,1 +1,29 @@
-@import url(http://fonts.googleapis.com/css?family=Raleway);body{background-color:#2c4762;background-image:-webkit-linear-gradient(left, #2c4762 0%,#6198cd 50%,#2c4762 100%);background-image:linear-gradient(to right,#2c4762 0%,#6198cd 50%,#2c4762 100%);font-family:'Raleway', sans-serif;font-size:14px;color:#404040;margin:0 auto}
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box; }
+
+.contentarea {
+  width: 980px;
+  margin: 0 auto; }
+
+.clear {
+  clear: both; }
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #404040;
+  margin: 0 auto; }
+
+header {
+  background: #49749D;
+  min-height: 300px;
+  padding: 30px 0; }
+
+.myface {
+  background: url(../images/kim.png) no-repeat;
+  width: 102px;
+  height: 102px;
+  margin: 0 auto; }

@@ -17,6 +17,9 @@ class Kirby {
   // The currently active page
   static public $page;
 
+  // An array of globally available data
+  static public $data = array();
+
   // The router object
   static public $router;
 
@@ -58,6 +61,28 @@ class Kirby {
   }
 
   /**
+   * Starts the Kirby setup and
+   * returns the content
+   *
+   * @return string
+   */
+  static public function start($config = array()) {
+
+    if(is_null(static::$site) or !empty($config)) static::setup($config);
+
+    $response = call(static::$route->action(), static::$route->arguments());
+
+    if(is_string($response)) {
+      return static::render(page($response));
+    } else if(is_array($response)) {
+      return static::render(page($response[0]), $response[1]);
+    } else {
+      return static::render($response);
+    }
+
+  }
+
+  /**
    * The path which will be used for the router
    *
    * @return string
@@ -85,29 +110,13 @@ class Kirby {
   }
 
   /**
-   * Starts the Kirby setup and
-   * returns the content
-   *
-   * @return string
-   */
-  static public function start($config = array()) {
-
-    if(is_null(static::$site) or !empty($config)) static::setup($config);
-
-    call(static::$route->action(), static::$route->arguments());
-
-    return static::render(static::$page);
-
-  }
-
-  /**
    * Registers all routes
    *
    * @return array
    */
   static protected function routes() {
 
-    $routes = array();
+    $routes = c::get('routes', array());
 
     if(static::$site->multilang()) {
 
@@ -117,10 +126,22 @@ class Kirby {
         'method'  => 'GET|POST',
         'action'  => function($lang, $path = null) {
           // visit the currently active page for a specific language
-          static::$page = static::$site->visit($path, $lang);
+          return kirby::$site->visit($path, $lang);
         }
       );
 
+    }
+
+    // tinyurl handling
+    if(c::$data['tinyurl.enabled']) {
+      $routes['tinyurl'] = array(
+        'pattern' => c::$data['tinyurl.folder'] . '/(:any)/(:any?)',
+        'action'  => function($hash, $lang = null) {
+          $page = kirby::$site->index()->findBy('hash', $hash);
+          if(!$page) return kirby::$site->errorPage();
+          go($page->url($lang));
+        }
+      );
     }
 
     // all other urls
@@ -129,7 +150,31 @@ class Kirby {
       'method'  => 'GET|POST',
       'action'  => function($path = null) {
         // visit the currently active page
-        kirby::$page = kirby::$site->visit($path);
+        $page = kirby::$site->visit($path);
+
+        // react on errors for invalid URLs
+        if($page->isErrorPage() and $page->uri() != $path) {
+
+          // get the filename
+          $filename = basename($path);
+          $pagepath = dirname($path);
+
+          // check if there's a page for the parent path
+          if($page = kirby::$site->find($pagepath)) {
+            // check if there's a file for the last element of the path
+            if($file = $page->file($filename)) {
+              // TODO: put asset pipe here
+              // redirect to the real file url to make this snappy
+              go($file->url());
+            }
+          }
+
+          // return the error page if there's no such page
+          return kirby::$site->errorPage();
+
+        }
+
+        return $page;
       }
     );
 
@@ -190,11 +235,25 @@ class Kirby {
     // the default timezone
     c::$data['timezone'] = 'UTC';
 
+    // tinyurl handling
+    c::$data['tinyurl.enabled'] = true;
+    c::$data['tinyurl.folder']  = 'x';
+
     // disable the cache by default
-    c::$data['cache'] = false;
+    c::$data['cache']         = false;
+    c::$data['cache.driver']  = 'file';
+    c::$data['cache.options'] = array();
 
     // set the default license code
     c::$data['license'] = null;
+
+    // url rewriting
+    c::$data['rewrite'] = true;
+
+    // markdown defaults
+    c::$data['markdown']        = true;
+    c::$data['markdown.extra']  = false;
+    c::$data['markdown.breaks'] = true;
 
     // pass the config vars from the constructor
     // to be able to set all roots
@@ -208,7 +267,6 @@ class Kirby {
     c::$data['root.controllers'] = c::$data['root.site']  . DS . 'controllers';
     c::$data['root.config']      = c::$data['root.site']  . DS . 'config';
     c::$data['root.tags']        = c::$data['root.site']  . DS . 'tags';
-    c::$data['root.blueprints']  = c::$data['root.site']  . DS . 'blueprints';
     c::$data['root.accounts']    = c::$data['root.site']  . DS . 'accounts';
 
     // auto css and js setup
@@ -217,8 +275,16 @@ class Kirby {
     c::$data['auto.js.url']   = 'assets/js/templates';
     c::$data['auto.js.root']  = c::$data['root'] . DS . 'assets' . DS . 'js'  . DS . 'templates';
 
-    // load the user config
-    if(file_exists(c::$data['root.config'] . DS . 'config.php')) include(c::$data['root.config'] . DS . 'config.php');
+    // load all available config files
+    $configs = array(
+      'main' => c::$data['root.config'] . DS . 'config.php',
+      'host' => c::$data['root.config'] . DS . 'config.' . server::get('HTTP_HOST') . '.php',
+      'addr' => c::$data['root.config'] . DS . 'config.' . server::get('SERVER_ADDR') . '.php',
+    );
+
+    foreach($configs as $confile) {
+      if(file_exists($confile)) include_once($confile);
+    }
 
     // pass the config vars from the constructor again to overwrite
     // stuff from the user config
@@ -251,9 +317,14 @@ class Kirby {
 
     thumb::$defaults['url']  = url::makeAbsolute(thumb::$defaults['url'], url::$home);
 
+    // cache setup
     if(c::$data['cache']) {
-      // TODO: make this switchable
-      cache::setup('file', c::get('root.cache'));
+      if(c::$data['cache.driver'] == 'file' and empty(c::$data['cache.options'])) {
+        c::$data['cache.options'] = array(
+          'root' => c::get('root.cache')
+        );
+      }
+      cache::setup(c::$data['cache.driver'], c::$data['cache.options']);
     } else {
       cache::setup('mock');
     }
@@ -299,7 +370,11 @@ class Kirby {
     if(!is_dir(c::$data['root.plugins'])) return static::$plugins = array();
 
     foreach(array_diff(scandir(c::$data['root.plugins']), array('.', '..')) as $file) {
-      if(is_dir(c::$data['root.plugins'] . DS . $file)) static::plugin($file);
+      if(is_dir(c::$data['root.plugins'] . DS . $file)) {
+        static::plugin($file, 'dir');
+      } else if(f::extension($file) == 'php') {
+        static::plugin(f::name($file), 'file');
+      }
     }
 
     return static::$plugins;
@@ -312,13 +387,18 @@ class Kirby {
    * a plugin, which is not yet loaded
    *
    * @param string $name
+   * @param string $mode
    * @return mixed
    */
-  static protected function plugin($name) {
+  static protected function plugin($name, $mode = 'dir') {
 
     if(isset(static::$plugins[$name])) return true;
 
-    $file = c::$data['root.plugins'] . DS . $name . DS . $name . '.php';
+    if($mode == 'dir') {
+      $file = c::$data['root.plugins'] . DS . $name . DS . $name . '.php';
+    } else {
+      $file = c::$data['root.plugins'] . DS . $name . '.php';
+    }
 
     if(file_exists($file)) return static::$plugins[$name] = include_once($file);
 
@@ -330,7 +410,7 @@ class Kirby {
    *
    * @return array
    */
-  static protected function controller($page) {
+  static protected function controller($page, $arguments = array()) {
 
     $file = c::$data['root.controllers'] . DS . $page->template() . '.php';
 
@@ -341,7 +421,8 @@ class Kirby {
       if(is_callable($callback)) return (array)call_user_func_array($callback, array(
         static::$site,
         static::$site->children(),
-        $page
+        $page,
+        $arguments
       ));
 
     }
@@ -353,8 +434,7 @@ class Kirby {
   static protected function tags() {
 
     // load all kirby tags
-    include_once(__DIR__ . DS . 'config'  . DS . 'tags.php');
-    include_once(__DIR__ . DS . 'vendors' . DS . 'parsedown.php');
+    include_once(__DIR__ . DS . 'config'  . DS . 'kirbytext.php');
 
     // install additional kirby tags
     kirbytext::install(c::$data['root.tags']);
@@ -368,7 +448,10 @@ class Kirby {
    * @param boolean $headers
    * @return string
    */
-  static public function render(Page $page, $headers = true) {
+  static public function render(Page $page, $data = array(), $headers = true) {
+
+    // register the currently rendered page
+    static::$page = $page;
 
     // send all headers for the page
     if($headers) $page->headers();
@@ -379,10 +462,10 @@ class Kirby {
     // if the cache is activated…
     if(c::$data['cache']) {
       // return the page from cache
-      return static::cache($page);
+      return static::cache($page, $data);
     } else {
       // render the template
-      return static::template($page);
+      return static::template($page, $data);
     }
 
   }
@@ -390,14 +473,14 @@ class Kirby {
   /**
    * Template configuration
    */
-  static protected function template(Page $page) {
+  static protected function template(Page $page, $data = array()) {
 
     // apply the basic template vars
     tpl::$data = array_merge(array(
       'site'  => static::$site,
       'pages' => static::$site->children(),
       'page'  => $page
-    ), static::controller($page));
+    ), $data, static::controller($page, $data));
 
     return tpl::load($page->templateFile());
 
@@ -408,16 +491,17 @@ class Kirby {
    *
    * @return string
    */
-  static protected function cache(Page $page) {
+  static protected function cache(Page $page, $data = array()) {
 
     // TODO: check for site modification date and flush the cache
 
     // try to read the cache
-    $cache = true ? cache::get($page->id()) : null;
+    $id    = static::$site->multilang() ? static::$site->language()->code() . '.' . md5($page->id()) : md5($page->id());
+    $cache = true ? cache::get($id) : null;
 
     // fetch fresh content if the cache is empty
     if(empty($cache)) {
-      $cache = static::template($page);
+      $cache = static::template($page, $data);
       cache::set($page->id(), $cache);
     }
 

@@ -1,10 +1,3 @@
-@import 'bourbon';
-@import url(http://fonts.googleapis.com/css?family=Raleway);
-
-body {
-	@include linear-gradient(to right,#2c4762 0%, #6198cd 50%, #2c4762 100%, $fallback: #2c4762);
-	font-family: 'Raleway', sans-serif;
-	font-size: 14px;
-	color: #404040;
-	margin: 0 auto;
-}
+@import 'bourbon'; // Import Bourbon
+@import 'base'; // Import Base CSS
+@import 'modules'; // Import Modules
