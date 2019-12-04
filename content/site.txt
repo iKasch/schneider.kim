@@ -1,7 +1,0 @@
-Title: Kim Schneider - schneider.kim
-----
-Author: Kim Schneider
-----
-Description: Frontend Entwickler Kim Schneider
-----
-Copyright: © (date: Year)
