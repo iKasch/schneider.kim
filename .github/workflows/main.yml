@@ -14,5 +14,4 @@ jobs:
       - name: checkout@master
       - uses: actions/checkout@v1
       - name: deploy with rsync
-      - run: |
-          rsync
+      - uses: contention/rsync-deployments@v1.0.0
