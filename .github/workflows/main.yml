@@ -6,19 +6,13 @@ on:
       - master
 
 jobs:
-  build:
-    name: checkout@master
+  build & deploy:
+    name: build & deploy
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-
-  deploy:
-    name: Deploy to Server
-    runs-on: ubuntu-latest
-
-    steps:
-      - run: ls -als
+      - name: checkout@master
+      - uses: actions/checkout@v1
+      - name: deploy with rsync
+      - run: |
+          rsync
