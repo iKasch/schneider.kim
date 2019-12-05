@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build & deploy:
+  build-and-deploy:
     name: build & deploy
     runs-on: ubuntu-latest
 
