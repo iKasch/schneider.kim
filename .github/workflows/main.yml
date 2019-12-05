@@ -19,7 +19,7 @@ jobs:
         env:
           DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-e -c -r --delete"
-          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          SERVER_PORT: ${{ secrets.REMOTE_PORT }}
           FOLDER: "./"
           SERVER_IP: ${{ secrets.REMOTE_HOST }}
           USERNAME: ${{ secrets.REMOTE_USER }}
