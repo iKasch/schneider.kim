@@ -1,0 +1,26 @@
+name: Deployment
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  build-and-deploy:
+    name: build & deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout@master
+        uses: actions/checkout@v1
+
+      - name: deploy to server
+        uses: AEnterprise/rsync-deploy@v1.0
+        env:
+          DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-e -c -r --delete --exclude=.git --exclude=.github --exclude=.gitignore"
+          SERVER_PORT: ${{ secrets.REMOTE_PORT }}
+          FOLDER: "./"
+          SERVER_IP: ${{ secrets.REMOTE_HOST }}
+          USERNAME: ${{ secrets.REMOTE_USER }}
+          SERVER_DESTINATION: ${{ secrets.REMOTE_TARGET }}
