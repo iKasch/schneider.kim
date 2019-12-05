@@ -1,4 +1,4 @@
-name: Deploy
+name: Deployment
 
 on:
   push:
@@ -12,10 +12,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Install Node.js
     - uses: actions/setup-node@v1
       with:
         node-version: '10.x'
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@v2.0.2
       env:
