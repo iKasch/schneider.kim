@@ -15,7 +15,7 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '10.x'
+        node-version: '12'
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@v2.0.2
       env:
