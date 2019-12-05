@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-
+    name: checkout@master
     runs-on: ubuntu-latest
 
     steps:
@@ -15,9 +15,14 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '10.x'
-    - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@v2.0.2
-      env:
+    - run: ls -als
+  deploy:
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.0.2
+        env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-rltgoDzvO --delete"
           SOURCE: "dist/"
