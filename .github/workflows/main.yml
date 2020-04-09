@@ -2,7 +2,7 @@ name: Deployment
 
 on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
       - name: deploy to server
         uses: AEnterprise/rsync-deploy@v1.0
         env:
-          DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-e -c -r --delete --exclude=.git --exclude=.github --exclude=.gitignore"
           SERVER_PORT: ${{ secrets.REMOTE_PORT }}
           FOLDER: "./"
