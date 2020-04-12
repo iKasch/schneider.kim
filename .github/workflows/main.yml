@@ -15,12 +15,11 @@ jobs:
         uses: actions/checkout@v1
 
       - name: deploy to server
-        uses: AEnterprise/rsync-deploy@v1.0
+        uses: easingthemes/ssh-deploy@v2.0.7
         env:
-          DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-e -c -r --delete --exclude=.git --exclude=.github --exclude=.gitignore"
-          SERVER_PORT: ${{ secrets.REMOTE_PORT }}
-          FOLDER: "./"
-          SERVER_IP: ${{ secrets.REMOTE_HOST }}
-          USERNAME: ${{ secrets.REMOTE_USER }}
-          SERVER_DESTINATION: ${{ secrets.REMOTE_TARGET }}
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rltgoDzvO"
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
