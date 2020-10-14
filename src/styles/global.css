@@ -39,9 +39,10 @@ html,
 body,
 #gatsby-focus-wrapper,
 #___gatsby {
-  margin: 0;
-  padding: 0;
   height: 100%;
+  margin: 0;
+  min-height: 100%;
+  padding: 0;
 }
 
 .main {
@@ -50,8 +51,9 @@ body,
   flex-direction: column;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-weight: 300;
-  height: 100%;
+  height: auto;
   justify-content: center;
+  min-height: 100%;
   width: 100vw;
 }
 
