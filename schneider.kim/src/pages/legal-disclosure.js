@@ -1,5 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
+import { Link } from "gatsby"
 
 export default function LegalDisclosure() {
   return (
@@ -67,6 +68,9 @@ export default function LegalDisclosure() {
             unauthorized use may violate copyright laws.
           </div>
         </div>
+        <Link to="/" className="footerlink">
+          Back
+        </Link>
       </div>
     </>
   )

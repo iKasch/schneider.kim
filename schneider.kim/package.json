@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "schneider.kim",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Personal website of Kim Schneider",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
@@ -14,10 +14,10 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "gatsby": "^2.24.67",
+    "gatsby": "^2.24.77",
     "gatsby-plugin-react-helmet": "^3.3.14",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
@@ -25,9 +25,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/iKasch/schneider.kim"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/iKasch/schneider.kim/issues"
   }
 }
