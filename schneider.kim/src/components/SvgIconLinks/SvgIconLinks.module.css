@@ -1,0 +1,27 @@
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  margin: 0 10px;
+}
+
+.link:first-child {
+  margin-left: 0;
+}
+
+.link:last-child {
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 680px) {
+  .links .link {
+    margin: 0 5px;
+  }
+
+  svg {
+    transform: scale(0.8);
+  }
+}

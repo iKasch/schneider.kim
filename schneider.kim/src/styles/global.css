@@ -1,0 +1,172 @@
+:root {
+  /* Basics */
+  --mainSpacer: 20px;
+
+  /* Light Theme */
+  --light-mainColor: #4f5c63;
+  --light-backgroundColor: linear-gradient(45deg, #b1cabe, #5c6b98);
+  --light-cardBackgroundColor: #fff;
+  --light-linkColor: #ce5a65;
+  --light-svgPath: #4f5c63;
+
+  /* Dark Theme */
+  --dark-mainColor: #979899;
+  --dark-backgroundColor: linear-gradient(45deg, #000000, #1b1a1a);
+  --dark-cardBackgroundColor: #101112;
+  --dark-linkColor: #dd6130;
+  --dark-svgPath: #868990;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
+    url("../assets/source-sans-pro-300.woff2") format("woff2"),
+    url("../assets/source-sans-pro-300.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url("../assets/source-sans-pro-regular.woff2") format("woff2"),
+    url("../assets/source-sans-pro-regular.woff") format("woff");
+}
+
+html,
+body,
+#gatsby-focus-wrapper,
+#___gatsby {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  height: 100%;
+  justify-content: center;
+  width: 100vw;
+}
+
+.card {
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.5),
+    0 40px 40px -20px rgba(0, 0, 0, 0.4), 0 70px 50px -30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-flow: column;
+  margin-bottom: auto;
+  margin-top: auto;
+  max-width: 750px;
+  padding: 30px;
+  position: relative;
+}
+
+.card a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.card .avatar {
+  --avatarSize: 150px;
+  width: var(--avatarSize);
+  height: var(--avatarSize);
+  border-radius: 100%;
+  margin-bottom: var(--mainSpacer);
+}
+
+.card .name {
+  letter-spacing: -0.075rem;
+  width: 100%;
+  font-size: 2.5em;
+  line-height: 1.25;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: var(--mainSpacer);
+}
+
+.card .intro {
+  margin-bottom: var(--mainSpacer);
+}
+
+hr {
+  width: 80%;
+  border: none;
+  margin-bottom: var(--mainSpacer);
+}
+
+.footerlink {
+  margin-bottom: 20px;
+  margin-top: auto;
+}
+
+@media (prefers-color-scheme: light) {
+  .main {
+    background: var(--light-backgroundColor);
+    color: var(--light-mainColor);
+  }
+  .card {
+    background: var(--light-cardBackgroundColor);
+  }
+
+  .card a {
+    color: var(--light-linkColor);
+  }
+
+  .footerlink {
+    color: var(--light-linkColor);
+  }
+
+  hr {
+    border-top: 1px solid var(--light-mainColor);
+  }
+
+  svg path {
+    fill: var(--light-svgPath);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .main {
+    color: var(--dark-mainColor);
+    background: var(--dark-backgroundColor);
+  }
+  .card {
+    background: var(--dark-cardBackgroundColor);
+  }
+
+  .card a {
+    color: var(--dark-linkColor);
+  }
+
+  .footerlink {
+    color: var(--dark-linkColor);
+  }
+
+  hr {
+    border-top: 1px solid var(--dark-mainColor);
+  }
+
+  svg path {
+    fill: var(--dark-svgPath);
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .card {
+    width: 70%;
+    height: 60%;
+    justify-content: center;
+  }
+
+  .card .intro {
+    text-align: center;
+  }
+}
