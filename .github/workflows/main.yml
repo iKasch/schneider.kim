@@ -14,12 +14,6 @@ jobs:
       - name: checkout@master
         uses: actions/checkout@v1
 
-      - name: install dependencies
-        uses: actions/setup-node@v1
-        with:
-          node-version: "12"
-      - run: npm install
-
       - name: build website
         uses: jzweifel/gatsby-cli-github-action@master
         with:
