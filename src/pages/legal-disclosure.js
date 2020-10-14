@@ -23,12 +23,12 @@ export default function LegalDisclosure() {
             <br />
             Represented by
             <br />
-            Kim Schneider
+            <strong>Kim Schneider</strong>
             <br />
             <br />
             Contact Information
             <br />
-            Telephone: 015140510304
+            Telephone: +49 151 40510304
             <br />
             E-Mail: web@schneider.kim
             <br />
