@@ -28,7 +28,7 @@ export default function Home() {
           </div>
           <div className="intro">
             Feel free to write me an{" "}
-            <a href="mailto:web@schneider.kim">email</a> or check my socials ✌️
+            <a href="mailto:web@schneider.kim">email</a> or check my socials. ✌️
           </div>
           <hr />
           <SvgIconLinks />
