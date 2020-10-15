@@ -1,16 +1,13 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Helmet } from "react-helmet"
 import SvgIconLinks from "../components/SvgIconLinks/SvgIconLinks"
 import KimAvatar from "../assets/kim-avatar.jpg"
+import MetaData from "../components/MetaData/MetaData"
 
 export default function Home() {
   return (
     <>
-      <Helmet>
-        <title>Kim Schneider | Frontend Engineer | Hamburg</title>
-        <link rel="canonical" href="http://schneider.kim" />
-      </Helmet>
+      <MetaData />
       <div className="main">
         <div className="card">
           <img src={KimAvatar} alt="" className="avatar" />
