@@ -1,14 +1,11 @@
 import React from "react"
-import { Helmet } from "react-helmet"
 import { Link } from "gatsby"
+import MetaData from "../components/MetaData/MetaData"
 
 export default function LegalDisclosure() {
   return (
     <>
-      <Helmet>
-        <title>Kim Schneider | Impressum</title>
-        <link rel="canonical" href="http://schneider.kim" />
-      </Helmet>
+      <MetaData />
       <div className="main">
         <div className="card">
           <div className="name">Legal Disclosure</div>

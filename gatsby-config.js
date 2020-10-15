@@ -7,4 +7,10 @@
 module.exports = {
   /* Your site config here */
   plugins: [`gatsby-plugin-react-helmet`],
+  siteMetadata: {
+    title: "Kim Schneider | Frontend Engineer | Hamburg",
+    description:
+      "Frontend Engineer living in Hamburg, currently working for MOIA.",
+    canonical: "http://schneider.kim",
+  },
 }
