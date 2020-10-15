@@ -1,31 +1,17 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import { graphql, useStaticQuery } from "gatsby"
+import { useSiteMetadata } from "../../hooks/useSiteMetadata"
 
 export default function MetaData() {
-  const data = useStaticQuery(graphql`
-    query HeaderQuery {
-      site {
-        siteMetadata {
-          title
-          description
-          canonical
-        }
-      }
-    }
-  `)
-
-  const {
-    site: {
-      siteMetadata: { title, description, canonical },
-    },
-  } = data
+  const { title, description, siteUrl, twitter } = useSiteMetadata()
 
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href={canonical} />
+      <link rel="canonical" href={siteUrl} />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:creator" content={twitter} />
     </Helmet>
   )
 }
