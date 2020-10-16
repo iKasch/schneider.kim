@@ -1,6 +1,6 @@
-import React from "react"
-import { Link } from "gatsby"
-import MetaData from "../components/MetaData/MetaData"
+import React from 'react'
+import { Link } from 'gatsby'
+import MetaData from '../components/MetaData/MetaData'
 
 export default function LegalDisclosure() {
   return (
@@ -37,7 +37,7 @@ export default function LegalDisclosure() {
             Accountability for content
             <br />
             The contents of our pages have been created with the utmost care.
-            However, we cannot guarantee the contents' accuracy, completeness or
+            However, we cannot guarantee the contents accuracy, completeness or
             topicality. According to statutory provisions, we are furthermore
             responsible for our own content on these web pages. In this matter,
             please note that we are not obliged to monitor the transmitted or
