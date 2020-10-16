@@ -13,7 +13,7 @@ export default function Home() {
           <img src={KimAvatar} alt="" className="avatar" />
           <div className="name">Kim Schneider</div>
           <div className="intro">
-            I'm a frontend engineer living in Hamburg, DE working{' '}
+            I&apos;m a frontend engineer living in Hamburg, DE working{' '}
             <a
               href="http://twitter.com/MOIAmobility"
               rel="noreferrer"
