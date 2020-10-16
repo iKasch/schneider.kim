@@ -6,13 +6,13 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [`gatsby-plugin-react-helmet`],
+  plugins: ['gatsby-plugin-react-helmet'],
   siteMetadata: {
-    title: "Kim Schneider | Frontend Engineer | Hamburg",
+    title: 'Kim Schneider | Frontend Engineer | Hamburg',
     description:
-      "Frontend Engineer living in Hamburg, currently working for MOIA.",
-    siteUrl: "http://schneider.kim",
-    twitter: "@ikasch",
-    name: "Kim Schneider",
+      'Frontend Engineer living in Hamburg, currently working for MOIA.',
+    siteUrl: 'http://schneider.kim',
+    twitter: '@ikasch',
+    name: 'Kim Schneider',
   },
 }
