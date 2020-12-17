@@ -69,6 +69,12 @@ export default function LegalDisclosure() {
           Back
         </Link>
       </div>
+      <script
+        async
+        defer
+        data-domain="schneider.kim"
+        src="https://plausible.io/js/plausible.js"
+      />
     </>
   )
 }

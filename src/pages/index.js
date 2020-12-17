@@ -34,6 +34,12 @@ export default function Home() {
           Imprint
         </Link>
       </div>
+      <script
+        async
+        defer
+        data-domain="schneider.kim"
+        src="https://plausible.io/js/plausible.js"
+      />
     </>
   )
 }
