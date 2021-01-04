@@ -38,7 +38,7 @@ export default function Home() {
         async
         defer
         data-domain="schneider.kim"
-        src="https://plausible.io/js/plausible.js"
+        src="https://plausible.io/js/plausible.outbound-links.js"
       />
     </>
   )
