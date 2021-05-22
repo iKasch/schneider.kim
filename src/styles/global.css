@@ -18,21 +18,21 @@
 }
 
 @font-face {
-  font-family: "Source Sans Pro";
+  font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 300;
-  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
-    url("../assets/source-sans-pro-300.woff2") format("woff2"),
-    url("../assets/source-sans-pro-300.woff") format("woff");
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'),
+    url('../assets/source-sans-pro-300.woff2') format('woff2'),
+    url('../assets/source-sans-pro-300.woff') format('woff');
 }
 
 @font-face {
-  font-family: "Source Sans Pro";
+  font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
-  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-    url("../assets/source-sans-pro-regular.woff2") format("woff2"),
-    url("../assets/source-sans-pro-regular.woff") format("woff");
+  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+    url('../assets/source-sans-pro-regular.woff2') format('woff2'),
+    url('../assets/source-sans-pro-regular.woff') format('woff');
 }
 
 html,
@@ -49,7 +49,7 @@ body,
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 300;
   height: auto;
   justify-content: center;
@@ -69,6 +69,7 @@ body,
   max-width: 750px;
   padding: 30px;
   position: relative;
+  text-align: center;
 }
 
 .card a {

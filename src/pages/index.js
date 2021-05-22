@@ -13,19 +13,32 @@ export default function Home() {
           <img src={KimAvatar} alt="" className="avatar" />
           <div className="name">Kim Schneider</div>
           <div className="intro">
-            I&apos;m a frontend engineer living in Hamburg, DE working{' '}
-            <a
-              href="http://twitter.com/MOIAmobility"
-              rel="noreferrer"
-              target="_blank"
-            >
-              @MOIA
-            </a>
-            .
-          </div>
-          <div className="intro">
-            Feel free to write me an{' '}
-            <a href="mailto:web@schneider.kim">email</a> or check my socials. ✌️
+            <p>
+              I&apos;m a frontend engineer living in Hamburg, DE working{' '}
+              <a
+                href="http://twitter.com/MOIAmobility"
+                rel="noreferrer"
+                target="_blank"
+              >
+                @MOIA
+              </a>
+              .
+            </p>
+            <p>
+              Longboard Freestyle & Dance Teamrider for{' '}
+              <a
+                href="https://www.studiolongboard.com/neuer-teamfahrer-kim-stellt-sich-vor/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Studio Longboard
+              </a>
+            </p>
+            <p>
+              Feel free to write me an{' '}
+              <a href="mailto:web@schneider.kim">email</a> or check my socials.
+              ✌️
+            </p>
           </div>
           <hr />
           <SvgIconLinks />
