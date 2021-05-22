@@ -97,6 +97,7 @@ body,
 
 .card .intro {
   margin-bottom: var(--mainSpacer);
+  line-height: 26px;
 }
 
 hr {
@@ -171,5 +172,12 @@ hr {
 
   .card .intro {
     text-align: center;
+  }
+}
+
+@media only screen and (max-height: 640px) {
+  .card {
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
 }

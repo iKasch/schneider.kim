@@ -21,11 +21,9 @@ export default function Home() {
                 target="_blank"
               >
                 @MOIA
-              </a>
-              .
-            </p>
-            <p>
-              Longboard Freestyle & Dance Teamrider for{' '}
+              </a>{' '}
+              <br />
+              and a Longboard Freestyle & Dance Teamrider for{' '}
               <a
                 href="https://www.studiolongboard.com/neuer-teamfahrer-kim-stellt-sich-vor/"
                 rel="noreferrer"
@@ -33,6 +31,7 @@ export default function Home() {
               >
                 Studio Longboard
               </a>
+              .
             </p>
             <p>
               Feel free to write me an{' '}
