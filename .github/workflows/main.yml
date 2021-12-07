@@ -17,10 +17,8 @@ jobs:
           node-version: 'lts/gallium'
           cache: 'npm'
           cache-dependency-path: subdir/package-lock.json
-        run: npm install
-
-      - name: Build Website
-        run: npm run build
+      - run: npm install
+      - run: npm run build
 
       - name: deploy to server
         uses: AEnterprise/rsync-deploy@v1.0
