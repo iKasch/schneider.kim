@@ -23,7 +23,7 @@ export default function Home() {
               <a href="http://moia.io" rel="noreferrer" target="_blank">
                 @MOIA
               </a>{' '}
-              as a<br /> frontend engineer and help out over at{' '}
+              as a frontend engineer and help out over at{' '}
               <a
                 href="https://postmitherz.org"
                 rel="noreferrer"
@@ -34,7 +34,7 @@ export default function Home() {
               .
             </p>
             <p>
-              I also do Longboard Freestyle & Dance as a<br /> Teamrider for{' '}
+              I also do Longboard Freestyle & Dance as a Teamrider for{' '}
               <a
                 href="https://www.studiolongboard.com/neuer-teamfahrer-kim-stellt-sich-vor/"
                 rel="noreferrer"
