@@ -17,87 +17,48 @@
   --dark-svgPath: #868990;
 }
 
+/* Fonts */
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 300;
-  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'),
-    url('../assets/source-sans-pro-300.woff2') format('woff2'),
-    url('../assets/source-sans-pro-300.woff') format('woff');
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
+    url("/assets/fonts/source-sans-pro-300.woff2") format("woff2"),
+    url("/assets/fonts/source-sans-pro-300.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 400;
-  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
-    url('../assets/source-sans-pro-regular.woff2') format('woff2'),
-    url('../assets/source-sans-pro-regular.woff') format('woff');
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url("/assets/fonts/source-sans-pro-regular.woff2") format("woff2"),
+    url("/assets/fonts/source-sans-pro-regular.woff") format("woff");
 }
 
-html,
-body,
-#gatsby-focus-wrapper,
-#___gatsby {
-  height: 100%;
+* {
+  box-sizing: border-box;
   margin: 0;
-  min-height: 100%;
+}
+
+html {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+
+body {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  font-weight: 300;
+  justify-content: center;
+  margin: 0;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   padding: 0;
 }
 
-.main {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  height: auto;
-  justify-content: center;
-  min-height: 100%;
-  width: 100vw;
-}
-
-.card {
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.5),
-    0 40px 40px -20px rgba(0, 0, 0, 0.4), 0 70px 50px -30px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-flow: column;
-  margin-bottom: auto;
-  margin-top: auto;
-  max-width: 750px;
-  padding: 30px;
-  position: relative;
-  text-align: center;
-}
-
-.card a {
+a {
   text-decoration: none;
-  font-weight: bold;
-}
-
-.card .avatar {
-  --avatarSize: 150px;
-  width: var(--avatarSize);
-  height: var(--avatarSize);
-  border-radius: 100%;
-  margin-bottom: var(--mainSpacer);
-}
-
-.card .name {
-  letter-spacing: -0.075rem;
-  width: 100%;
-  font-size: 2.5em;
-  line-height: 1.25;
-  font-weight: 200;
-  text-align: center;
-  margin-bottom: var(--mainSpacer);
-}
-
-.card .intro {
-  margin-bottom: var(--mainSpacer);
-  line-height: 26px;
 }
 
 .card .intro p {
@@ -105,26 +66,23 @@ body,
 }
 
 hr {
-  width: 80%;
   border: none;
-  margin-bottom: var(--mainSpacer);
+  margin: var(--mainSpacer) 0;
+  width: 80%;
 }
 
 .footerlink {
-  margin-bottom: 20px;
-  margin-top: auto;
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 15px;
 }
 
 @media (prefers-color-scheme: light) {
-  .main {
+  body {
     background: var(--light-backgroundColor);
     color: var(--light-mainColor);
   }
-  .card {
-    background: var(--light-cardBackgroundColor);
-  }
-
-  .card a {
+  a {
     color: var(--light-linkColor);
   }
 
@@ -142,15 +100,11 @@ hr {
 }
 
 @media (prefers-color-scheme: dark) {
-  .main {
-    color: var(--dark-mainColor);
+  body {
     background: var(--dark-backgroundColor);
+    color: var(--dark-mainColor);
   }
-  .card {
-    background: var(--dark-cardBackgroundColor);
-  }
-
-  .card a {
+  a {
     color: var(--dark-linkColor);
   }
 
@@ -164,24 +118,5 @@ hr {
 
   svg path {
     fill: var(--dark-svgPath);
-  }
-}
-
-@media only screen and (max-width: 680px) {
-  .card {
-    width: 70%;
-    height: 60%;
-    justify-content: center;
-  }
-
-  .card .intro {
-    text-align: center;
-  }
-}
-
-@media only screen and (max-height: 640px) {
-  .card {
-    margin-top: 50px;
-    margin-bottom: 50px;
   }
 }

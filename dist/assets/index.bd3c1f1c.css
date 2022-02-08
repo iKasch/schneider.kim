@@ -1,0 +1,143 @@
+header.astro-U5W4O7WY {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: min(100%, 68ch);
+}
+article.astro-D3N5LCGA {
+  padding-top: 2em;
+  line-height: 1.5;
+}
+section.astro-D3N5LCGA {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 70ch;
+}
+.banner.astro-D3N5LCGA {
+  text-align: center;
+  font-size: 1.2rem;
+  background: var(--color-light);
+  padding: 1em 1.5em 1em 0.75em;
+  border-radius: 4px;
+}
+pre.astro-D3N5LCGA,
+code.astro-D3N5LCGA {
+  font-family: var(--font-mono);
+  background: var(--color-light);
+  border-radius: 4px;
+}
+pre.astro-D3N5LCGA {
+  padding: 1em 1.5em;
+}
+.tree.astro-D3N5LCGA {
+  line-height: 1.2;
+}
+code.astro-D3N5LCGA:not(.tree) {
+  padding: 0.125em;
+  margin: 0 -0.125em;
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
+    url(../assets/source-sans-pro-300.woff2) format("woff2"),
+    url(../assets/source-sans-pro-300.woff) format("woff");
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url(../assets/source-sans-pro-regular.woff2) format("woff2"),
+    url(../assets/source-sans-pro-regular.woff) format("woff");
+}
+:root {
+  --mainSpacer: 20px;
+  --light-mainColor: #4f5c63;
+  --light-backgroundColor: linear-gradient(45deg, #b1cabe, #5c6b98);
+  --light-cardBackgroundColor: #fff;
+  --light-linkColor: #ce5a65;
+  --light-svgPath: #4f5c63;
+  --dark-mainColor: #979899;
+  --dark-backgroundColor: linear-gradient(45deg, #000000, #1b1a1a);
+  --dark-cardBackgroundColor: #101112;
+  --dark-linkColor: #dd6130;
+  --dark-svgPath: #868990;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  --user-font-scale: 1rem - 16px;
+  font-size: clamp(
+    0.875rem,
+    0.4626rem + 1.0309vw + var(--user-font-scale),
+    1.125rem
+  );
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  padding: 4rem 2rem;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  justify-content: center;
+  background: #f9fafb;
+  color: #111827;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111827;
+    color: #fff;
+  }
+}
+:root {
+  --font-mono: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
+    "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
+    "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
+    monospace;
+  --color-light: #f3f4f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-light: #1f2937;
+  }
+}
+a {
+  color: inherit;
+}
+header > div {
+  font-size: clamp(2rem, -0.4742rem + 6.1856vw, 2.75rem);
+}
+header > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header h1 {
+  font-size: 1em;
+  font-weight: 500;
+}
+header img {
+  width: 2em;
+  height: 2.667em;
+}
+h2 {
+  font-weight: 500;
+  font-size: clamp(1.5rem, 1rem + 1.25vw, 2rem);
+}
+.counter {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1em;
+  font-size: 2rem;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+.counter > pre {
+  text-align: center;
+  min-width: 3ch;
+}

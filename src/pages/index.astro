@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Card from "../components/Card/Card.astro"
+import CardAvatar from "../components/Card/CardAvatar.astro"
+import CardTitle from "../components/Card/CardTitle.astro"
+import CardContent from "../components/Card/CardContent.astro"
+import Link from "../components/Link.astro"
+import Socials from "../components/Socials.astro"
+
+const title = "Kim Schneider | Frontend Engineer | Hamburg"
+const description = "Frontend Engineer living in Hamburg, currently working for MOIA."
+---
+
+<BaseLayout title={title} description={description}>
+  <Card maxWidth={570}>
+    <CardAvatar avatar="/assets/kim-avatar.jpg" />
+    <CardTitle>Hi, I'm Kim 👋</CardTitle>
+    <CardContent>
+      <p>
+        I live in Hamburg, germany and work for <Link link="http://moia.io" alt="MOIA.io" newTab
+          >@MOIA</Link
+        > as a frontend engineer and help out over at <Link link="https://postmitherz.org" newTab
+          >Post mit Herz.</Link
+        >
+      </p>
+      <p>
+        I also do Longboard Freestyle & Dance as a Teamrider for <Link
+          link="https://www.studiolongboard.com/neuer-teamfahrer-kim-stellt-sich-vor/"
+          newTab>Studio Longboard.</Link
+        >
+      </p>
+      <p>
+        Feel free to write me an <Link link="mailto:web@schneider.kim">email</Link> or check my socials.
+        ✌️
+      </p>
+    </CardContent>
+    <hr />
+    <Socials />
+  </Card>
+</BaseLayout>
