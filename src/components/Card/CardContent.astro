@@ -1,0 +1,15 @@
+<div class="content">
+  <slot />
+</div>
+
+<style lang="scss">
+  .content {
+    line-height: 26px;
+    :global(p) {
+      margin-bottom: 10px;
+      :global(a) {
+        font-weight: bold;
+      }
+    }
+  }
+</style>
