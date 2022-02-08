@@ -81,7 +81,8 @@ hr {
 
 @media only screen and (max-height: 800px) {
   .footerlink {
-    margin-top: 40px;
+    margin-top: 30px;
+    margin-bottom: 10px;
   }
 }
 
