@@ -1,0 +1,29 @@
+---
+import Link from "../components/Link.astro"
+
+export interface Props {
+  title?: string
+  description?: string
+  footerLink?: string
+  footerLinkText?: string
+}
+
+const { title, description, footerLink = "/imprint", footerLinkText = "Imprint" } = Astro.props
+---
+
+<html>
+  <head>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="http://schneider.kim" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@ikasch" />
+    <link rel="stylesheet" type="text/css" href={Astro.resolve("../styles/global.css")} />
+  </head>
+  <body>
+    <slot />
+    <Link link={footerLink} className="footerlink">{footerLinkText}</Link>
+  </body>
+</html>
