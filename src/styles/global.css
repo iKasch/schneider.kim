@@ -43,6 +43,8 @@
 
 html {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 body {
