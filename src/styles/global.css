@@ -1,28 +1,118 @@
+:root {
+  /* Basics */
+  --mainSpacer: 20px;
+
+  /* Light Theme */
+  --light-mainColor: #4f5c63;
+  --light-backgroundColor: linear-gradient(45deg, #b1cabe, #5c6b98);
+  --light-cardBackgroundColor: #fff;
+  --light-linkColor: #ce5a65;
+  --light-svgPath: #4f5c63;
+
+  /* Dark Theme */
+  --dark-mainColor: #979899;
+  --dark-backgroundColor: linear-gradient(45deg, #000000, #1b1a1a);
+  --dark-cardBackgroundColor: #101112;
+  --dark-linkColor: #dd6130;
+  --dark-svgPath: #868990;
+}
+
+/* Fonts */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
+    url("/assets/fonts/source-sans-pro-300.woff2") format("woff2"),
+    url("/assets/fonts/source-sans-pro-300.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url("/assets/fonts/source-sans-pro-regular.woff2") format("woff2"),
+    url("/assets/fonts/source-sans-pro-regular.woff") format("woff");
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
 }
 
-:root {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  font-size: 1rem;
-  --user-font-scale: 1rem - 16px;
-  font-size: clamp(0.875rem, 0.4626rem + 1.0309vw + var(--user-font-scale), 1.125rem);
+html {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
 
 body {
-  padding: 4rem 2rem;
-  width: 100%;
-  min-height: 100vh;
-  display: grid;
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  font-weight: 300;
   justify-content: center;
-  background: #f9fafb;
-  color: #111827;
+  margin: 0;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  border: none;
+  margin: var(--mainSpacer) 0;
+  width: 80%;
+}
+
+.footerlink {
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 15px;
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--light-backgroundColor);
+    color: var(--light-mainColor);
+  }
+  a {
+    color: var(--light-linkColor);
+  }
+
+  .footerlink {
+    color: var(--light-linkColor);
+  }
+
+  hr {
+    border-top: 1px solid var(--light-mainColor);
+  }
+
+  svg path {
+    fill: var(--light-svgPath);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: #111827;
-    color: #fff;
+    background: var(--dark-backgroundColor);
+    color: var(--dark-mainColor);
+  }
+  a {
+    color: var(--dark-linkColor);
+  }
+
+  .footerlink {
+    color: var(--dark-linkColor);
+  }
+
+  hr {
+    border-top: 1px solid var(--dark-mainColor);
+  }
+
+  svg path {
+    fill: var(--dark-svgPath);
   }
 }
