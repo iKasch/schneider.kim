@@ -74,7 +74,7 @@ hr {
 .footerlink {
   position: relative;
   margin-top: 100px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 @media (prefers-color-scheme: light) {
