@@ -2,15 +2,15 @@ lockfileVersion: 5.3
 
 specifiers:
   '@astrojs/renderer-react': 0.4.1
-  '@babel/core': 7.17.0
+  '@babel/core': 7.17.2
   astro: 0.22.20
   autoprefixer: 10.4.2
   postcss: 8.4.6
   prettier-plugin-astro: 0.0.12
 
 devDependencies:
-  '@astrojs/renderer-react': 0.4.1_@babel+core@7.17.0
-  '@babel/core': 7.17.0
+  '@astrojs/renderer-react': 0.4.1_@babel+core@7.17.2
+  '@babel/core': 7.17.2
   astro: 0.22.20
   autoprefixer: 10.4.2_postcss@8.4.6
   postcss: 8.4.6
@@ -89,35 +89,35 @@ packages:
     engines: {node: ^14.15.0 || >=16.0.0}
     dev: true
 
-  /@astrojs/renderer-preact/0.4.0_@babel+core@7.17.0:
+  /@astrojs/renderer-preact/0.4.0_@babel+core@7.17.2:
     resolution: {integrity: sha512-pid/tz6c0V07TZNstZILBSXBF/HPCyfnWLfwtw2F66rE+TI1EpZmlZPNz9X0r28n0pBzTfNzu2ZwIvWs+CuTcQ==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
-      '@babel/plugin-transform-react-jsx': 7.16.5_@babel+core@7.17.0
+      '@babel/plugin-transform-react-jsx': 7.16.5_@babel+core@7.17.2
       preact: 10.5.15
       preact-render-to-string: 5.1.19_preact@10.5.15
     transitivePeerDependencies:
       - '@babel/core'
     dev: true
 
-  /@astrojs/renderer-react/0.4.1_@babel+core@7.17.0:
+  /@astrojs/renderer-react/0.4.1_@babel+core@7.17.2:
     resolution: {integrity: sha512-GrDw3zTUjjRBzWYFEPecHg9KBuFnWdLXnz+uAsEfCqeOIt6IPyzmN5lIVfx9Ta5+lYsIt3NlBKu5X7vwfCSoNQ==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
-      '@babel/plugin-transform-react-jsx': 7.16.5_@babel+core@7.17.0
+      '@babel/plugin-transform-react-jsx': 7.16.5_@babel+core@7.17.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     transitivePeerDependencies:
       - '@babel/core'
     dev: true
 
-  /@astrojs/renderer-svelte/0.3.1_7287559351bd6a89eba4ba4e1a696eab:
+  /@astrojs/renderer-svelte/0.3.1_640380c2266980dec9220a31939f13ac:
     resolution: {integrity: sha512-upK/Mm00wI8xWqxiSjBV4SuDCSh3hsafLzORvy5vjpd2Czw8LM4c2SdlegBD1vtzbFUc1CnwZqNGdhCSbSHJYA==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.30_svelte@3.44.3+vite@2.6.14
       svelte: 3.44.3
-      svelte-preprocess: 4.10.1_34b6eb4299666257e10e5fce2cfd8dc2
+      svelte-preprocess: 4.10.1_dea0de07e0cde174184a75439fd82af0
     transitivePeerDependencies:
       - '@babel/core'
       - coffeescript
@@ -161,16 +161,16 @@ packages:
     engines: {node: '>=6.9.0'}
     dev: true
 
-  /@babel/core/7.17.0:
-    resolution: {integrity: sha512-x/5Ea+RO5MvF9ize5DeVICJoVrNv0Mi2RnIABrZEKYvPEpldXwauPkgvYA17cKa6WpU3LoYvYbuEMFtSNFsarA==}
+  /@babel/core/7.17.2:
+    resolution: {integrity: sha512-R3VH5G42VSDolRHyUO4V2cfag8WHcZyxdq5Z/m8Xyb92lW/Erm/6kM+XtRFGf3Mulre3mveni2NHfEUws8wSvw==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@ampproject/remapping': 2.0.4
       '@babel/code-frame': 7.16.7
       '@babel/generator': 7.17.0
-      '@babel/helper-compilation-targets': 7.16.7_@babel+core@7.17.0
+      '@babel/helper-compilation-targets': 7.16.7_@babel+core@7.17.2
       '@babel/helper-module-transforms': 7.16.7
-      '@babel/helpers': 7.17.0
+      '@babel/helpers': 7.17.2
       '@babel/parser': 7.17.0
       '@babel/template': 7.16.7
       '@babel/traverse': 7.17.0
@@ -200,14 +200,14 @@ packages:
       '@babel/types': 7.17.0
     dev: true
 
-  /@babel/helper-compilation-targets/7.16.7_@babel+core@7.17.0:
+  /@babel/helper-compilation-targets/7.16.7_@babel+core@7.17.2:
     resolution: {integrity: sha512-mGojBwIWcwGD6rfqgRXVlVYmPAv7eOpIemUG3dGnDdCY4Pae70ROij3XmfrH6Fa1h1aiDylpglbZyktfzyo/hA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/compat-data': 7.16.4
-      '@babel/core': 7.17.0
+      '@babel/core': 7.17.2
       '@babel/helper-validator-option': 7.16.7
       browserslist: 4.19.1
       semver: 6.3.0
@@ -302,8 +302,8 @@ packages:
     engines: {node: '>=6.9.0'}
     dev: true
 
-  /@babel/helpers/7.17.0:
-    resolution: {integrity: sha512-Xe/9NFxjPwELUvW2dsukcMZIp6XwPSbI4ojFBJuX5ramHuVE22SVcZIwqzdWo5uCgeTXW8qV97lMvSOjq+1+nQ==}
+  /@babel/helpers/7.17.2:
+    resolution: {integrity: sha512-0Qu7RLR1dILozr/6M0xgj+DFPmi6Bnulgm9M8BVa9ZCWxDqlSnqt3cf8IDPB5m45sVXUZ0kuQAgUrdSFFH79fQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/template': 7.16.7
@@ -328,27 +328,27 @@ packages:
     hasBin: true
     dev: true
 
-  /@babel/plugin-syntax-jsx/7.16.5_@babel+core@7.17.0:
+  /@babel/plugin-syntax-jsx/7.16.5_@babel+core@7.17.2:
     resolution: {integrity: sha512-42OGssv9NPk4QHKVgIHlzeLgPOW5rGgfV5jzG90AhcXXIv6hu/eqj63w4VgvRxdvZY3AlYeDgPiSJ3BqAd1Y6Q==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.0
+      '@babel/core': 7.17.2
       '@babel/helper-plugin-utils': 7.16.5
     dev: true
 
-  /@babel/plugin-transform-react-jsx/7.16.5_@babel+core@7.17.0:
+  /@babel/plugin-transform-react-jsx/7.16.5_@babel+core@7.17.2:
     resolution: {integrity: sha512-+arLIz1d7kmwX0fKxTxbnoeG85ONSnLpvdODa4P3pc1sS7CV1hfmtYWufkW/oYsPnkDrEeQFxhUWcFnrXW7jQQ==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.0
+      '@babel/core': 7.17.2
       '@babel/helper-annotate-as-pure': 7.16.0
       '@babel/helper-module-imports': 7.16.0
       '@babel/helper-plugin-utils': 7.16.5
-      '@babel/plugin-syntax-jsx': 7.16.5_@babel+core@7.17.0
+      '@babel/plugin-syntax-jsx': 7.16.5_@babel+core@7.17.2
       '@babel/types': 7.17.0
     dev: true
 
@@ -821,12 +821,12 @@ packages:
       '@astrojs/language-server': 0.8.8
       '@astrojs/markdown-remark': 0.6.0
       '@astrojs/prism': 0.4.0
-      '@astrojs/renderer-preact': 0.4.0_@babel+core@7.17.0
-      '@astrojs/renderer-react': 0.4.1_@babel+core@7.17.0
-      '@astrojs/renderer-svelte': 0.3.1_7287559351bd6a89eba4ba4e1a696eab
+      '@astrojs/renderer-preact': 0.4.0_@babel+core@7.17.2
+      '@astrojs/renderer-react': 0.4.1_@babel+core@7.17.2
+      '@astrojs/renderer-svelte': 0.3.1_640380c2266980dec9220a31939f13ac
       '@astrojs/renderer-vue': 0.3.0_vite@2.6.14
       '@astropub/webapi': 0.10.11
-      '@babel/core': 7.17.0
+      '@babel/core': 7.17.2
       '@babel/traverse': 7.16.5
       '@proload/core': 0.2.2
       '@proload/plugin-tsm': 0.1.1_@proload+core@0.2.2
@@ -3813,7 +3813,7 @@ packages:
       svelte: 3.44.3
     dev: true
 
-  /svelte-preprocess/4.10.1_34b6eb4299666257e10e5fce2cfd8dc2:
+  /svelte-preprocess/4.10.1_dea0de07e0cde174184a75439fd82af0:
     resolution: {integrity: sha512-NSNloaylf+o9UeyUR2KvpdxrAyMdHl3U7rMnoP06/sG0iwJvlUM4TpMno13RaNqovh4AAoGsx1jeYcIyuGUXMw==}
     engines: {node: '>= 9.11.2'}
     requiresBuild: true
@@ -3854,7 +3854,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@babel/core': 7.17.0
+      '@babel/core': 7.17.2
       '@types/pug': 2.0.5
       '@types/sass': 1.43.1
       detect-indent: 6.1.0
