@@ -75,8 +75,10 @@ hr {
   position: relative;
   margin-top: 100px;
   margin-bottom: 20px;
+}
 
-  @media only screen and (max-height: 800px) {
+@media only screen and (max-height: 800px) {
+  .footerlink {
     margin-top: 40px;
   }
 }
