@@ -5,6 +5,9 @@
 <style lang="scss">
   .content {
     line-height: 26px;
+    @media only screen and (max-width: 500px) {
+      line-height: normal;
+    }
     :global(p) {
       margin-bottom: 10px;
       :global(a) {

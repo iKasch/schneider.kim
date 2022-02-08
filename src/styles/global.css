@@ -43,6 +43,8 @@
 
 html {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 body {
@@ -79,7 +81,8 @@ hr {
 
 @media only screen and (max-height: 800px) {
   .footerlink {
-    margin-top: 40px;
+    margin-top: 30px;
+    margin-bottom: 10px;
   }
 }
 
