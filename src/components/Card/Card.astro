@@ -22,30 +22,23 @@ const { maxWidth } = Astro.props
     padding: 30px;
     position: relative;
     text-align: center;
-  }
-  @media (prefers-color-scheme: light) {
-    .card {
-      background: var(--light-cardBackgroundColor);
-    }
-  }
 
-  @media (prefers-color-scheme: dark) {
-    .card {
-      background: var(--dark-cardBackgroundColor);
-    }
-  }
-
-  @media only screen and (max-width: 680px) {
-    .card {
+    @media only screen and (max-width: 680px) {
       width: 85%;
       height: 60%;
       justify-content: center;
     }
-  }
 
-  @media only screen and (max-height: 800px) {
-    .card {
-      margin-top: 80px;
+    @media only screen and (max-height: 800px) {
+      margin-top: 40px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      background: var(--light-cardBackgroundColor);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background: var(--dark-cardBackgroundColor);
     }
   }
 </style>
