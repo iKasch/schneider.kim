@@ -61,6 +61,10 @@ a {
   text-decoration: none;
 }
 
+.card .intro p {
+  max-width: 500px;
+}
+
 hr {
   border: none;
   margin: var(--mainSpacer) 0;
