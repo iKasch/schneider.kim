@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout@main
-        uses: actions/checkout@v1
-
-      - name: build website
-        uses: jzweifel/gatsby-cli-github-action@master
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v2
         with:
-          gatsby-arg: build
+          node-version: 'lts/gallium'
+          cache: 'npm'
+      - run: npm install
+      - run: npm run build
 
       - name: deploy to server
         uses: AEnterprise/rsync-deploy@v1.0

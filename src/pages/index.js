@@ -11,19 +11,30 @@ export default function Home() {
       <div className="main">
         <div className="card">
           <img src={KimAvatar} alt="" className="avatar" />
-          <div className="name">Kim Schneider</div>
+          <div className="name">
+            Hi, I&apos;m Kim{' '}
+            <span role="img" aria-label="waving hi">
+              👋
+            </span>
+          </div>
           <div className="intro">
             <p>
-              I&apos;m a frontend engineer living in Hamburg, DE working{' '}
+              I live in Hamburg, germany and work for{' '}
+              <a href="http://moia.io" rel="noreferrer" target="_blank">
+                @MOIA
+              </a>{' '}
+              as a frontend engineer and help out over at{' '}
               <a
-                href="http://twitter.com/MOIAmobility"
+                href="https://postmitherz.org"
                 rel="noreferrer"
                 target="_blank"
               >
-                @MOIA
-              </a>{' '}
-              <br />
-              and a Longboard Freestyle & Dance Teamrider for{' '}
+                Post mit Herz
+              </a>
+              .
+            </p>
+            <p>
+              I also do Longboard Freestyle & Dance as a Teamrider for{' '}
               <a
                 href="https://www.studiolongboard.com/neuer-teamfahrer-kim-stellt-sich-vor/"
                 rel="noreferrer"

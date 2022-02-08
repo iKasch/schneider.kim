@@ -1,5 +1,5 @@
-import React from "react"
-import SvgIconLinksStyles from "./SvgIconLinks.module.css"
+import React from 'react'
+import * as SvgIconLinksStyles from './SvgIconLinks.module.css'
 
 export default function SvgIconLinks() {
   return (
