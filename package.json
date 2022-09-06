@@ -11,7 +11,7 @@
   "devDependencies": {
     "@astrojs/renderer-react": "0.4.1",
     "@babel/core": "7.17.4",
-    "astro": "0.22.20",
+    "astro": "1.1.6",
     "autoprefixer": "10.4.2",
     "postcss": "8.4.6",
     "prettier-plugin-astro": "0.0.12"
