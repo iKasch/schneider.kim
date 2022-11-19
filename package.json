@@ -9,11 +9,14 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/renderer-react": "0.4.1",
     "@babel/core": "7.20.2",
-    "astro": "0.22.20",
+    "astro": "1.6.10",
     "autoprefixer": "10.4.13",
     "postcss": "8.4.19",
-    "prettier-plugin-astro": "0.7.0"
+    "prettier-plugin-astro": "0.7.0",
+    "sass": "^1.56.1"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^1.0.0"
   }
 }

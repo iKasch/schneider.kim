@@ -1,5 +1,6 @@
 ---
 import Link from "../components/Link.astro"
+import "../styles/global.css"
 
 export interface Props {
   title?: string
@@ -20,11 +21,15 @@ const { title, description, footerLink = "/imprint", footerLinkText = "Imprint" 
     <link rel="canonical" href="http://schneider.kim" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="@ikasch" />
-    <link rel="stylesheet" type="text/css" href={Astro.resolve("../styles/global.css")} />
   </head>
   <body>
     <slot />
     <Link link={footerLink} className="footerlink">{footerLinkText}</Link>
-    <script async defer data-domain="schneider.kim" src="https://plausible.io/js/plausible.outbound-links.js"></script>
+    <script
+      async
+      defer
+      data-domain="schneider.kim"
+      src="https://plausible.io/js/plausible.outbound-links.js"
+    ></script>
   </body>
 </html>
