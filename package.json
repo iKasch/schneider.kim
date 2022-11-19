@@ -10,10 +10,10 @@
   },
   "devDependencies": {
     "@astrojs/renderer-react": "0.4.1",
-    "@babel/core": "7.17.4",
+    "@babel/core": "7.20.2",
     "astro": "0.22.20",
-    "autoprefixer": "10.4.2",
-    "postcss": "8.4.6",
-    "prettier-plugin-astro": "0.0.12"
+    "autoprefixer": "10.4.13",
+    "postcss": "8.4.19",
+    "prettier-plugin-astro": "0.7.0"
   }
 }
