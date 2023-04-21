@@ -52,10 +52,8 @@ body {
   display: flex;
   flex-flow: column;
   font-weight: 300;
-  justify-content: center;
   margin: 0;
   min-height: 100vh;
-  min-height: -webkit-fill-available;
   padding: 0;
 }
 
@@ -75,7 +73,7 @@ hr {
 
 .footerlink {
   position: relative;
-  margin-top: 100px;
+  /* margin-top: 100px; */
   margin-bottom: 20px;
 }
 
