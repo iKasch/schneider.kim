@@ -14,9 +14,9 @@
     "autoprefixer": "10.4.13",
     "postcss": "8.4.19",
     "prettier-plugin-astro": "0.7.0",
-    "sass": "^1.56.1"
+    "sass": "^1.62.0"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^1.0.0"
+    "@astrojs/sitemap": "^1.2.2"
   }
 }
