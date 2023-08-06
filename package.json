@@ -1,22 +1,25 @@
 {
   "name": "@example/starter",
   "version": "0.0.1",
-  "private": true,
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "devDependencies": {
     "@babel/core": "7.22.9",
-    "astro": "2.10.1",
     "autoprefixer": "10.4.14",
     "postcss": "8.4.27",
     "prettier-plugin-astro": "0.11.0",
     "sass": "^1.64.2"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^2.0.1"
+    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/rss": "^2.4.3",
+    "@astrojs/sitemap": "^2.0.1",
+    "astro": "2.10.1"
   }
 }
