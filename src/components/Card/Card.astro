@@ -1,0 +1,46 @@
+---
+export interface Props {
+  maxWidth?: number
+}
+
+const { maxWidth } = Astro.props
+---
+
+<div class="card" style={maxWidth && `max-width: ${maxWidth}px`}>
+  <slot />
+</div>
+
+<style lang="scss">
+  .card {
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.5), 0 40px 40px -20px rgba(0, 0, 0, 0.4),
+      0 70px 50px -30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-flow: column;
+    max-width: 750px;
+    padding: 30px;
+    position: relative;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    @media only screen and (max-width: 680px) {
+      width: 85%;
+      height: 60%;
+      justify-content: center;
+    }
+
+    @media only screen and (max-height: 800px) {
+      margin-top: 40px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      background: var(--light-cardBackgroundColor);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background: var(--dark-cardBackgroundColor);
+    }
+  }
+</style>

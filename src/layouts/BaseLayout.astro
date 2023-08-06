@@ -1,12 +1,15 @@
 ---
-import "../styles/global.css";
+import Link from "../components/Link.astro"
+import "../styles/global.css"
 
 export interface Props {
-  title: string
-  description: string
+  title?: string
+  description?: string
+  footerLink?: string
+  footerLinkText?: string
 }
 
-const { title, description } = Astro.props
+const { title, description, footerLink = "/imprint", footerLinkText = "Imprint" } = Astro.props
 ---
 
 <html>
@@ -21,6 +24,7 @@ const { title, description } = Astro.props
   </head>
   <body>
     <slot />
+    <Link link={footerLink} className="footerlink">{footerLinkText}</Link>
     <script
       async
       defer
