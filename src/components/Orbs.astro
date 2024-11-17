@@ -1,0 +1,78 @@
+<div class="orbs">
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+</div>
+
+<style lang="scss">
+  .orbs {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .orb.one {
+      width: calc(100vw / 2);
+      height: calc(100vw / 4);
+      top: 35%;
+      left: 43%;
+      opacity: 0.8;
+      background: linear-gradient(7deg, #9b594b 0%, #e9b979 100%);
+      filter: blur(126px);
+      animation:
+        orbit 25s infinite linear 2s,
+        sizeChange 12s infinite ease-in-out 2s;
+    }
+
+    .orb.two {
+      width: calc(100vw / 2);
+      height: calc(100vw / 4);
+      top: 0;
+      left: 0;
+      opacity: 0.7;
+      animation:
+        orbit 20s infinite linear,
+        sizeChange 10s infinite ease-in-out;
+      background: linear-gradient(315deg, #6d94b0 0%, #1b2329 100%);
+      filter: blur(90px);
+    }
+
+    .orb.three {
+      top: 50%;
+      left: 10%;
+      opacity: 0.8;
+      width: calc(100vw / 3);
+      height: calc(100vw / 2);
+      background: linear-gradient(7deg, #000 0%, #bdbdbd 100%);
+      filter: blur(126px);
+      animation:
+        orbit 22s infinite linear 4s,
+        sizeChange 11s infinite ease-in-out 4s;
+    }
+  }
+  @keyframes orbit {
+    0% {
+      transform: rotate(0deg) translateX(100px) rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg) translateX(100px) rotate(-360deg);
+    }
+  }
+
+  @keyframes sizeChange {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.2);
+    }
+  }
+</style>
