@@ -1,8 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Intro from "../components/Intro.astro"
+import BaseLayout from "../layouts/BaseLayout.astro"
 const title = "Kim Schneider | Frontend Engineer | Hamburg"
 const description = "Frontend Engineer living in Hamburg, currently working for MOIA."
 ---
 
 <BaseLayout title={title} description={description}>
+  <Intro />
 </BaseLayout>
