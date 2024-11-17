@@ -2,8 +2,61 @@
   /* Basics */
 
   /* Light Theme */
+  --color-background-light: #ecd9c3;
+  --color-content-light: #333333;
 
   /* Dark Theme */
+  --color-background-dark: #1c1d20;
+  --color-content-dark: #e8e8e8;
 }
 
 /* Fonts */
+@font-face {
+  font-family: "Kreon";
+  src: url("/fonts/Kreon-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html,
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: "Kreon", sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    background-color: var(--color-background-light);
+    color: var(--color-content-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: var(--color-background-dark);
+    color: var(--color-content-dark);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+body::before {
+  background: var(--color-background-dark);
+  filter: url(#noiseFilter);
+}
+
+body::before,
+body::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 75%;
+}
