@@ -1,5 +1,9 @@
 ---
-import "../styles/global.css";
+import "../styles/global.css"
+
+import Chevron from "../components/Chevron.astro"
+import NoiseFilter from "../components/NoiseFilter.astro"
+import Orbs from "../components/Orbs.astro"
 
 export interface Props {
   title: string
@@ -16,16 +20,16 @@ const { title, description } = Astro.props
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href="http://schneider.kim" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:creator" content="@ikasch" />
   </head>
   <body>
     <slot />
+    <Chevron />
+    <NoiseFilter />
+    <Orbs />
     <script
       async
       defer
       data-domain="schneider.kim"
-      src="https://plausible.io/js/plausible.outbound-links.js"
-    ></script>
+      src="https://plausible.io/js/plausible.outbound-links.js"></script>
   </body>
 </html>
