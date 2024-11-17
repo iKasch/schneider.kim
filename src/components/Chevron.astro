@@ -1,0 +1,60 @@
+---
+
+---
+
+<div class="chevrons">
+  <div class="chevron top-left"></div>
+  <div class="chevron top-right"></div>
+  <div class="chevron bottom-left"></div>
+  <div class="chevron bottom-right"></div>
+</div>
+
+<style>
+  .chevron {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+  }
+
+  .chevron::before,
+  .chevron::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background-color: white;
+  }
+
+  .chevron::before {
+    /* transform: rotate(45deg); */
+  }
+
+  .chevron::after {
+    transform: rotate(90deg);
+    top: -19px;
+    left: 19px;
+  }
+
+  .top-left {
+    top: 10px;
+    left: 10px;
+  }
+
+  .top-right {
+    top: 10px;
+    right: 10px;
+    transform: rotate(90deg);
+  }
+
+  .bottom-left {
+    bottom: 10px;
+    left: 10px;
+    transform: rotate(-90deg);
+  }
+
+  .bottom-right {
+    bottom: 10px;
+    right: 10px;
+    transform: rotate(180deg);
+  }
+</style>
