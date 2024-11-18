@@ -1,3 +1,11 @@
+---
+interface SocialsProps {
+  justifyItems: string
+}
+
+const { justifyItems } = Astro.props
+---
+
 <div class="links">
   <a class="link" href="https://www.threads.net/@ikasch" rel="me" target="_blank">
     <svg xmlns="http://www.w3.org/2000/svg" aria-label="Threads" viewBox="0 0 192 192">
@@ -50,11 +58,11 @@
   </a>
 </div>
 
-<style lang="scss">
+<style define:vars={{ justifyItems }} lang="scss">
   .links {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    justify-content: center;
+    justify-items: var(--justifyItems);
     align-items: center;
     gap: 15px;
 
