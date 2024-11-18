@@ -11,9 +11,10 @@
 
 <style>
   .chevron {
+    --chevronSize: 30px;
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: var(--chevronSize);
+    height: var(--chevronSize);
   }
 
   .chevron::before,
@@ -21,7 +22,7 @@
     content: "";
     position: absolute;
     width: 2px;
-    height: 40px;
+    height: var(--chevronSize);
   }
 
   @media (prefers-color-scheme: light) {
@@ -39,8 +40,8 @@
 
   .chevron::after {
     transform: rotate(90deg);
-    top: -19px;
-    left: 19px;
+    top: calc((-1 * var(--chevronSize) / 2) - 1px);
+    left: calc((var(--chevronSize) / 2) - 1px);
   }
 
   .top-left {
