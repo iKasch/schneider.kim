@@ -1,0 +1,32 @@
+---
+import Socials from "../Socials.astro"
+
+const yearsOfExperience = new Date().getFullYear() - 2006
+---
+
+<div class="aboutKim">
+  <h1>Hi, I'm Kim 👋</h1>
+  <p>
+    With more than {yearsOfExperience} years of development experience, I have gained expertise in full-stack
+    engineering, web motion design, and leading sustainable teams while working in diverse industries
+    and collaborating on a wide range of projects.
+  </p>
+  <p>
+    I live in Hamburg, Germany, work for @MOIA and help out over at Post mit Herz. I also do
+    Longboard Freestyle & Dance as a Teamrider for Studio Longboard. Feel free to write me an email
+    or check my socials.
+  </p>
+  <Socials justifyItems="center" />
+</div>
+<style>
+  .aboutKim {
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 100px;
+    width: 30%;
+    z-index: 100;
+    text-align: center;
+  }
+</style>
