@@ -22,11 +22,19 @@
     position: absolute;
     width: 2px;
     height: 40px;
-    background-color: white;
   }
 
-  .chevron::before {
-    /* transform: rotate(45deg); */
+  @media (prefers-color-scheme: light) {
+    .chevron::before,
+    .chevron::after {
+      background-color: var(--color-content-light);
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    .chevron::before,
+    .chevron::after {
+      background-color: var(--color-content-dark);
+    }
   }
 
   .chevron::after {
