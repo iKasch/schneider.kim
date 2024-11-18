@@ -45,8 +45,12 @@ body {
 }
 
 body::before {
-  background: var(--color-background-dark);
-  filter: url(#noiseFilter);
+  @media (prefers-color-scheme: light) {
+    filter: url(#noiseFilterLight);
+  }
+  @media (prefers-color-scheme: dark) {
+    filter: url(#noiseFilterDark);
+  }
 }
 
 body::before,
