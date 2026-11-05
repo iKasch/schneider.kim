@@ -1,0 +1,56 @@
+---
+import "../styles/global.css"
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+const canonical = new URL(Astro.url.pathname, Astro.site)
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Kim Schneider</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+  </head>
+  <body>
+    <main>
+      <h1>{title}</h1>
+      <slot />
+    </main>
+    <footer>
+      <nav aria-label="Footer">
+        <a href="/proof/support">Proof support</a>
+        <a href="/proof/privacy">Privacy policy</a>
+        <a href="/imprint">Imprint</a>
+      </nav>
+    </footer>
+  </body>
+</html>
+
+<style>
+  main {
+    width: min(750px, calc(100% - 32px));
+    margin: 48px auto 24px;
+    padding: clamp(24px, 5vw, 48px);
+    border-radius: 10px;
+    background: var(--light-cardBackgroundColor);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+  h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 300; line-height: 1.2; margin-bottom: 28px; }
+  main :global(p) { margin-bottom: 20px; }
+  main :global(p:last-child) { margin-bottom: 0; }
+  a, main :global(a) { text-decoration: underline; text-underline-offset: 3px; }
+  footer { margin: 0 auto 32px; padding: 0 16px; }
+  nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 24px; }
+  nav a { padding: 10px 0; }
+  @media (prefers-color-scheme: dark) {
+    main { background: var(--dark-cardBackgroundColor); }
+  }
+</style>
