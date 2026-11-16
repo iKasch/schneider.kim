@@ -1,0 +1,27 @@
+---
+import TextLayout from "../../layouts/TextLayout.astro"
+---
+
+<TextLayout title="Marrow privacy policy" description="How Marrow handles videos, transcripts, conversations, API keys, iCloud and purchases.">
+  <p>Last updated November 16, 2026.</p>
+  <p>Marrow is developed by Kim Schneider. Contact <a href="mailto:support@schneider.kim">support@schneider.kim</a> about privacy. Developer details are available in the <a href="/imprint">imprint</a>.</p>
+  <h2>Videos and conversations</h2>
+  <p>Marrow stores video links, titles, channel information, captions, generated summaries, questions, answers and processing status in a shared app container on your device. The app and its Share Extension use this container. Marrow has no developer-operated account or content server, advertising SDK or analytics tracker.</p>
+  <p>When you open a video link, Marrow contacts YouTube to retrieve metadata and available captions. Video thumbnails load from Google's image servers. These services receive the requested video identifier and normal connection information, such as your IP address. Marrow does not download or store the video's audio or video file. Google's <a href="https://policies.google.com/privacy">privacy policy</a> applies to its services.</p>
+  <h2>AI processing</h2>
+  <p>With Apple Intelligence selected, Marrow uses Apple's on-device Foundation Models framework to process text. Retrieving captions and thumbnails still contacts YouTube and Google.</p>
+  <p>With OpenAI or Anthropic selected and data sharing enabled, Marrow sends the video title, captions, your question and relevant conversation history directly to that provider to generate summaries or answers. Your API key authenticates these requests. Requests and usage are associated with your API account and billed by that provider.</p>
+  <p>Chat may use provider web search when a question needs information beyond the captions. Search terms may be processed by the provider's search partners. The provider's retention, security and account settings apply. See <a href="https://openai.com/policies/privacy-policy/">OpenAI's privacy policy</a> and <a href="https://www.anthropic.com/legal/privacy">Anthropic's privacy policy</a>. Avoid submitting sensitive information that you do not want those services to process.</p>
+  <p>You can disable data sharing for your selected provider in Settings, delete its API key, or select Apple Intelligence. This prevents future provider requests. It does not recall requests already sent or delete information already retained by a provider. Use that provider's privacy controls for those requests.</p>
+  <h2>API keys</h2>
+  <p>Keys are stored in the device-local Keychain and shared with Marrow's Share Extension. Marrow does not synchronize keys through iCloud or send them to the developer. You can replace or delete a key in Settings.</p>
+  <h2>iCloud and retention</h2>
+  <p>When iCloud is available, Marrow synchronizes library events, including transcripts and conversations, with your private CloudKit database. Apple processes this storage under its <a href="https://www.apple.com/legal/privacy/">privacy policy</a>. Your device's backup settings may also include app data.</p>
+  <p>Deleting a conversation removes it from the visible library and synchronizes a deletion event. The current version keeps earlier events in local storage and CloudKit to preserve synchronization history. Deleting a conversation does not immediately erase those underlying records. To remove cloud data, use Apple's iCloud storage controls for Marrow. Device backups and provider records follow their respective retention policies.</p>
+  <h2>Optional purchases and support</h2>
+  <p>Apple processes optional one-time tips through the App Store. Marrow receives product and verified transaction information to complete the purchase. The developer does not receive your payment-card details.</p>
+  <p>If you email support, the developer receives the information you include and uses it to respond and investigate the issue. Do not send API keys. You may request deletion of support correspondence at the contact address above, subject to applicable legal retention requirements.</p>
+  <h2>Your choices</h2>
+  <p>You may have rights to access, correct, delete, restrict or object to processing of personal data and to complain to your local data-protection authority. Contact the developer for data held through support correspondence. Contact Apple, Google or your selected AI provider for information held by those services.</p>
+  <p><a href="/marrow/support">Help and support</a></p>
+</TextLayout>
